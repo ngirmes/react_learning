@@ -1,0 +1,57 @@
+From Home.js:
+
+// When you need a reactive value (something that might change at some point)
+// we use the useState hook to do that, hooks always start with 'use'
+
+//Props are a way to pass data from a parent component to a child component
+
+// useEffect is another hook that runs a function every render
+// passing in an empty dependency array "[]" makues sure the hook only runs the function after the first initial render
+// can add dependencies (any changing values that should trigger the function to run) such as 'name' down below
+// useEffect is a good place to fetch data because we know it runs the function when it renders intially
+
+// Each top level property is considered a resource (down below that would be "blogs")
+// data would typically come from a databse using an API endpoint but we're using
+// We're using json server which allows us to build a fake REST API
+
+/* The below code exemplifies the use of reactive values and state changing
+If used, any and all other code must be commented out
+const Home = () => {
+// event object can be useful as it has many properties, this is shown down below with the 'e'
+
+    // let name = 'doodle';
+    const [name, setName] = useState('doodle');
+    const [num, setNum] = useState(Math.random())
+
+    const handleClick = () => {
+        setName('ur mom');
+        setNum(Math.random());
+    }
+
+    const handleClickAgain = (name, e) => {
+        console.log('hello ' + name, e);
+    }
+
+    return (  
+        <div className="home">
+            <h2>Homepage</h2>
+            <p>Name: {name} Random Num: {num}</p>   
+            <button onClick={handleClick}>Click me</button>
+            <button onClick={(e) => handleClickAgain('mario', e)}>Click me again</button>
+        </div>
+    );
+}
+ 
+export default Home;
+*/
+
+***********************************************************************************************************************
+
+From NavBar.js:
+// A component is just a function which returns a jsx template which is exported at eof
+// typing 'sfc' creates a stateless funcitonal component
+
+***********************************************************************************************************************
+
+From BlogList.js
+

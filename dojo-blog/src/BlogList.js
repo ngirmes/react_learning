@@ -1,11 +1,4 @@
-// Using props down below as the BlogList component is receiving data from the Home component
-// The function below could also receive props, and we could access data using ex: props.title
-
-
-//In JSX, curly braces are used to embed javascript within the markup
 const BlogList = ({blogs, title, handleDelete}) => {
-
-
 
     return (  
         <div className="blog-list">

@@ -1,6 +1,3 @@
-// A component is just a function which returns a jsx template which is exported at eof
-// typing 'sfc' creates a stateless funcitonal component
-
 const Navbar = () => {
     return (  
         <nav className="navbar">
