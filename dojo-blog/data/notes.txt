@@ -6,8 +6,8 @@ From Home.js:
 //Props are a way to pass data from a parent component to a child component
 
 // useEffect is another hook that runs a function every render
-// passing in an empty dependency array "[]" makues sure the hook only runs the function after the first initial render
-// can add dependencies (any changing values that should trigger the function to run) such as 'name' down below
+// passing in an empty dependency array "[]" makes sure the hook only runs the function after the first initial render
+// BUT you can add dependencies (any changing values that should trigger the function to run) such as 'name'
 // useEffect is a good place to fetch data because we know it runs the function when it renders intially
 
 // Each top level property is considered a resource (down below that would be "blogs")
@@ -45,6 +45,16 @@ const Home = () => {
 export default Home;
 */
 
+// This line of code:
+// {blogs && <BlogList blogs={blogs} title="All blogs!" handleDelete={handleDelete}/>}
+// is making sure that the data has an opporunity to be fetched before the page is rendered
+// 'blogs' will evaluate to null when the application first loads and therefore will not send null data to the BlogList component
+
+// Example of a handleDelete function when we were hardcoding data:
+// const handleDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id)
+        setBlogs(newBlogs);
+    }
 ***********************************************************************************************************************
 
 From NavBar.js:
@@ -54,4 +64,28 @@ From NavBar.js:
 ***********************************************************************************************************************
 
 From BlogList.js
+// Using props down below as the BlogList component is receiving data from the Home component
+// The function below could also receive props, and we could access data using ex: props.title
+
+
+//In JSX, curly braces are used to embed javascript within the markup
+
+***********************************************************************************************************************
+
+From db.json:
+// Need to use the json server package to watch this file and wrap it with some endpoints
+// Could either install it locally or use npx
+
+// Instructions for npx:
+    // In powershell run: 'npx json-server --watch data/db.json --port 8000'
+    // specifying port 8000 to avoid conflict with port 3000 which is what the local development react server is already running on
+    // Running this command will provide or 'watch' the file and wrap it with some API endpoints
+    // Can send HTTP requests to the endpoints
+    // Endpoints used in this tutorial:
+        - /blogs GET (Fetches all blogs)
+        - /blogs/{id} GET (Fetches a single blog)
+        - /blogs POST (Adds a new blog)
+        - /blogs/{id} DELETE (Deletes a blog)
+
+
 
