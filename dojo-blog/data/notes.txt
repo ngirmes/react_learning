@@ -41,7 +41,9 @@ const Home = () => {
         </div>
     );
 }
- 
+
+// .catch catches any kind of network error inlcuding not being able to connect to the server
+// need to check the response as wekk because catch will not catch faulty return data
 export default Home;
 */
 
