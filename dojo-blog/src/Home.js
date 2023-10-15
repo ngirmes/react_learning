@@ -5,28 +5,30 @@ const Home = () => {
 
     const [blogs, setBlogs] = useState(null)
     const [isPending, setIsPending] = useState(true)
-    const [name, setName] = useState('mario')
+    // const [name, setName] = useState('mario')
     const[error, setError] = useState(null)
 
     // To retrieve data and catch network and data retrieval errors
     useEffect(() => {
-        fetch('http://localhost:8000/blogs') //Returns a promise
-            .then(response => {
+        const fetchData = async () => {
+           try {
+                const response = await fetch('http://localhost:8000/blogs') //Returns a promise
+                const data = await response.json();
                 if(!response.ok){
-                    throw Error('Error: could not fetch data for the resource') //Throws error if the response is not ok (!200)
+                    throw Error('Request failed with status code ' + response.status) //Throws error if the response is not ok (!200)
                 }
-                return response.json(); //Parses the json into a javascript object and returns another promise
-            })
-            .then(data => {
                 setBlogs(data); //Setting blog variable with retrieved data
                 setIsPending(false) //Removes loading message
                 setError(null) //Set to null to avoid unnecessary error message
-            })
-            .catch(err => {
+            }
+            catch (error) {
                 setIsPending(false) //Removes loading message
-                setError(err.message) //Sets error message
-            })
-    }, [])
+                setError(error.message) //Sets error message
+            }  
+        };
+        
+        fetchData();      
+    }, []);
 
     return( // blogs={blogs} is an example of a prop
         <div className='home'>
@@ -34,7 +36,7 @@ const Home = () => {
             { isPending && <div>Loading...</div>}
             {blogs && <BlogList blogs={ blogs } title="All blogs!"/>}
             {/*<BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} title="Mario's blogs!"*/}
-            <button onClick={() => setName('luigi')}>change name</button>
+            {/*<button onClick={() => setName('luigi')}>change name</button>*/}
         </div>
     );
 }
