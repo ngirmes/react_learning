@@ -61,3 +61,20 @@
   margin-bottom: 8px;
 }
 
+.blog-preview a {
+  text-decoration: none;
+}
+.blog-preview p {
+  font-style: italic;
+}
+
+/* blog details page */
+.blog-details h2{
+  font-size: 20px;
+  color: rgba(0, 148, 123, 0.733);
+  margin-bottom: 10px;
+}
+
+.blog-details div {
+  margin: 20px 0;
+}

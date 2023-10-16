@@ -57,6 +57,9 @@ export default Home;
         const newBlogs = blogs.filter(blog => blog.id !== id)
         setBlogs(newBlogs);
     }
+
+// When  we externalize logiv into it's own file we're creating something called a custom hook
+// Ex: creating a custom hook for fetching the json data for the blogs
 ***********************************************************************************************************************
 
 From NavBar.js:
@@ -89,5 +92,16 @@ From db.json:
         - /blogs POST (Adds a new blog)
         - /blogs/{id} DELETE (Deletes a blog)
 
+// install react router: 'npm install react-router-dom@5'version 5 might be changed ny now
+
+/*style={{
+    color: "white",
+    backgroundColor: "#f1356d", This code exemplifies the use of in-line css within a js file
+    borderRadius: "8px"
+}}*/
+
+// React applications delegate all the routing and changing of page content to the browser
+// The initial commuication with the server responds with the initial html page and the compiled react js files allowing react to take full control
+// Afterwards, the react router intercepts server requests making the website feel faster
 
 
