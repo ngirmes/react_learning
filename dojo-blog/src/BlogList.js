@@ -6,7 +6,7 @@ const BlogList = ({ blogs, title }) => {
         <div className="blog-list">
             <h2>{ title }</h2>
             {blogs.map((blog) => (
-                <div className="blog-preview" key={blog.id}>
+                <div className="blog-preview" key={blog.id}> {/* To sort them according to their id */}
                     <Link to={"/blogs/" + blog.id}> {/* This is an example of a template string meaning we can output variables inside it */}
                         <h2>{blog.title}</h2>
                         <p>Written by {blog.author}</p>

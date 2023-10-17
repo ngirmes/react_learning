@@ -3,6 +3,7 @@ import Home from './Home';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
+import NotFound from './NotFound';
 
 // This is considered the root comoponent and is the first that's rendered, further components are nested inside the root
 function App() {
@@ -12,15 +13,18 @@ function App() {
       <div className="App">
         <Navbar/>
         <div className="content">
-          <Switch>
+          <Switch> {/* Switch component makes sure only 1 route component shows in the browser at one time */}
             <Route exact path="/">
               <Home />
             </Route>
             <Route path="/create">
               <Create />
             </Route>
-            <Route path="/blogs/:id">
+            <Route path="/blogs/:id"> {/* This route includes a route parameter using a ':' with the keyword after it */}
               <BlogDetails />
+            </Route>
+            <Route path="*"> {/* This will catch any other route */}
+              <NotFound />
             </Route>
           </Switch>
         </div>

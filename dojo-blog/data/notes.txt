@@ -104,4 +104,5 @@ From db.json:
 // The initial commuication with the server responds with the initial html page and the compiled react js files allowing react to take full control
 // Afterwards, the react router intercepts server requests making the website feel faster
 
-
+// Events:
+// Automatically get access to the event parameter when an event occurs
