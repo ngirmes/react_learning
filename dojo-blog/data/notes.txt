@@ -1,0 +1,108 @@
+From Home.js:
+
+// When you need a reactive value (something that might change at some point)
+// we use the useState hook to do that, hooks always start with 'use'
+
+//Props are a way to pass data from a parent component to a child component
+
+// useEffect is another hook that runs a function every render
+// passing in an empty dependency array "[]" makes sure the hook only runs the function after the first initial render
+// BUT you can add dependencies (any changing values that should trigger the function to run) such as 'name'
+// useEffect is a good place to fetch data because we know it runs the function when it renders intially
+
+// Each top level property is considered a resource (down below that would be "blogs")
+// data would typically come from a databse using an API endpoint but we're using
+// We're using json server which allows us to build a fake REST API
+
+/* The below code exemplifies the use of reactive values and state changing
+If used, any and all other code must be commented out
+const Home = () => {
+// event object can be useful as it has many properties, this is shown down below with the 'e'
+
+    // let name = 'doodle';
+    const [name, setName] = useState('doodle');
+    const [num, setNum] = useState(Math.random())
+
+    const handleClick = () => {
+        setName('ur mom');
+        setNum(Math.random());
+    }
+
+    const handleClickAgain = (name, e) => {
+        console.log('hello ' + name, e);
+    }
+
+    return (  
+        <div className="home">
+            <h2>Homepage</h2>
+            <p>Name: {name} Random Num: {num}</p>   
+            <button onClick={handleClick}>Click me</button>
+            <button onClick={(e) => handleClickAgain('mario', e)}>Click me again</button>
+        </div>
+    );
+}
+
+// .catch catches any kind of network error inlcuding not being able to connect to the server
+// need to check the response as wekk because catch will not catch faulty return data
+export default Home;
+*/
+
+// This line of code:
+// {blogs && <BlogList blogs={blogs} title="All blogs!" handleDelete={handleDelete}/>}
+// is making sure that the data has an opporunity to be fetched before the page is rendered
+// 'blogs' will evaluate to null when the application first loads and therefore will not send null data to the BlogList component
+
+// Example of a handleDelete function when we were hardcoding data:
+// const handleDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id)
+        setBlogs(newBlogs);
+    }
+
+// When  we externalize logiv into it's own file we're creating something called a custom hook
+// Ex: creating a custom hook for fetching the json data for the blogs
+***********************************************************************************************************************
+
+From NavBar.js:
+// A component is just a function which returns a jsx template which is exported at eof
+// typing 'sfc' creates a stateless funcitonal component
+
+***********************************************************************************************************************
+
+From BlogList.js
+// Using props down below as the BlogList component is receiving data from the Home component
+// The function below could also receive props, and we could access data using ex: props.title
+
+
+//In JSX, curly braces are used to embed javascript within the markup
+
+***********************************************************************************************************************
+
+From db.json:
+// Need to use the json server package to watch this file and wrap it with some endpoints
+// Could either install it locally or use npx
+
+// Instructions for npx:
+    // In powershell run: 'npx json-server --watch data/db.json --port 8000'
+    // specifying port 8000 to avoid conflict with port 3000 which is what the local development react server is already running on
+    // Running this command will provide or 'watch' the file and wrap it with some API endpoints
+    // Can send HTTP requests to the endpoints
+    // Endpoints used in this tutorial:
+        - /blogs GET (Fetches all blogs)
+        - /blogs/{id} GET (Fetches a single blog)
+        - /blogs POST (Adds a new blog)
+        - /blogs/{id} DELETE (Deletes a blog)
+
+// install react router: 'npm install react-router-dom@5'version 5 might be changed ny now
+
+/*style={{
+    color: "white",
+    backgroundColor: "#f1356d", This code exemplifies the use of in-line css within a js file
+    borderRadius: "8px"
+}}*/
+
+// React applications delegate all the routing and changing of page content to the browser
+// The initial commuication with the server responds with the initial html page and the compiled react js files allowing react to take full control
+// Afterwards, the react router intercepts server requests making the website feel faster
+
+// Events:
+// Automatically get access to the event parameter when an event occurs
